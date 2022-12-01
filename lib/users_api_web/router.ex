@@ -24,9 +24,14 @@ defmodule UsersApiWeb.Router do
 
       live_dashboard "/dashboard", metrics: UsersApiWeb.Telemetry
     end
+
     scope "/api", UsersApiWeb do
       pipe_through :api
       resources "/users", UserController, except: [:new, :edit]
+    end
+
+    scope "/test", UsersApiWeb do
+        get "/test/:id", TestController, :abc
     end
   end
 
